@@ -1,6 +1,10 @@
 <?
+/**
+ * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ */
+
 $arModuleVersion = array(
-	"VERSION" => "3.2.2",
-	"VERSION_DATE" => "2018-06-15 20:28:04"
+	"VERSION" => "1.0.0",
+	"VERSION_DATE" => "2019-08-2 20:28:04"
 );
 ?>
