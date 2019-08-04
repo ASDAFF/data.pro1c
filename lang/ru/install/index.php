@@ -5,8 +5,8 @@
 
 $MESS ['IMPORT_PRO1C_MODULE_NAME'] = "Продвинутый обмен с 1С";
 $MESS ['IMPORT_PRO1C_MODULE_DESCRIPTION'] = "Модуль позволяет радикально ускорить стандартный обмен с 1С, обновлять только цены и остатки, следить за ходом обмена в реальном времени в Живом логе, иметь лог-файл для анализа ошибок и производительности, настроить для отказоустойчивый обмен и видеть информацию о последних обменах";
-$MESS ['IMPORT_PRO1C_PARTNER_NAME'] = "Аскарон системс";
-$MESS ['IMPORT_PRO1C_SITE_URI']= "http://import.ru";
+$MESS ['IMPORT_PRO1C_PARTNER_NAME'] = "ASDAFF";
+$MESS ['IMPORT_PRO1C_SITE_URI']= "https://asdaff.github.io/";
 $MESS ['IMPORT_PRO1C_NEED_RIGHT_VER'] = "Для установки данного решения необходима версия главного модуля #NEED# или выше.";
 $MESS ['IMPORT_PRO1C_NEED_MODULES'] = "Для установки данного решения необходимо наличие модуля #MODULE#.";
 

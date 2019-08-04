@@ -48,9 +48,9 @@ class import_pro1c extends CModule
 		}
 		
 		// !Twice! Marketplace bug. 2013-03-13
-		$this->PARTNER_NAME = "Import Systems";
+		$this->PARTNER_NAME = "ASDAFF";
 		$this->PARTNER_NAME = GetMessage("IMPORT_PRO1C_PARTNER_NAME");
-		$this->PARTNER_URI = 'http://import.ru/';
+		$this->PARTNER_URI = 'https://asdaff.github.io/';
 
 		$this->MODULE_NAME = GetMessage('IMPORT_PRO1C_MODULE_NAME');
 		$this->MODULE_DESCRIPTION = GetMessage('IMPORT_PRO1C_MODULE_DESCRIPTION');
