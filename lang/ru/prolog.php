@@ -1,6 +1,6 @@
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
 $MESS ['import_pro1c_prolog_status_demo'] = "Модуль «Продвинутый обмен с 1С» работает в демо-режиме";

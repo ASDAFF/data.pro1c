@@ -1,6 +1,6 @@
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
 $MESS ['import_pro1c_check_title'] = "Проверка источника запроса на сайте";
@@ -17,7 +17,7 @@ $MESS ['import_pro1c_check_notes'] = '
 	
 	<p>Модуль позволяет отключить проверку источника запроса и сделать, чтобы стандартный обмен заработал со старой 1С.</p>
 
-	<p><a href="http://askaron.ru/api_help/course1/lesson111/" target="_blank">Описание в документации</a></p>
+	<p><a href="http://import.ru/api_help/course1/lesson111/" target="_blank">Описание в документации</a></p>
 ';
 
 

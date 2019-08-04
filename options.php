@@ -1,7 +1,13 @@
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
+
+###################################################
+# import.pro1c module		                      #
+# http://import.ru                               #
+# mailto:mail@import.ru                          #
+###################################################
 
 IncludeModuleLangFile(__FILE__);
 IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/options.php");
@@ -180,7 +186,7 @@ else
 
 		<?if(CModule::IncludeModule("pull")):?>
 
-		<?$pull_version = CImportPro1C::GetModuleVersion("pull");?>
+		<?$pull_version = CImportPro1c::GetModuleVersion("pull");?>
 
 		<?if ( version_compare( $pull_version, '14.0.0' ) < 0):?>
 			<br /><br />
@@ -232,7 +238,7 @@ else
 		"GROUP" => "debug",
 	);
 
-	$log_file_name = CImportPro1C::GetLogFileName();
+	$log_file_name = CImportPro1c::GetLogFileName();
 	$log_help = GetMessage("import_pro1c_log_help", array("#LOG_FILENAME#" => $log_file_name ) );
 
 	$arOptions[] = array(

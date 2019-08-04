@@ -1,7 +1,7 @@
 <?if(!check_bitrix_sessid()) return;?>
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
 global $import_pro1c_global_errors;

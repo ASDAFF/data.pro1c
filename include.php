@@ -1,7 +1,13 @@
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
+
+###################################################
+# import.pro1c module                            #
+# http://import.ru                               #
+# mailto:mail@import.ru                          #
+###################################################
 
 //IncludeModuleLangFile(__FILE__);
 
@@ -402,7 +408,7 @@ class CImportPro1C
 				}
 				else
 				{
-					$message = GetMessage( "import_pro1c_element_update_error", array( "#ID#" => $arFields["ID"],  "#RESULT_MESSAGE#" => $arFields["RESULT_MESSAGE"] ) );				
+					$message = GetMessage( "import_pro1c_element_update_error", array( "#ID#" => $arFields["ID"],  "#RESULT_MESSAGE#" => $arFields["RESULT_MESSAGE"] ) );
 				}
 			}
 			

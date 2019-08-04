@@ -1,6 +1,6 @@
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
 IncludeModuleLangFile(__FILE__);
@@ -202,7 +202,7 @@ class import_pro1c extends CModule
 		UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandler");
 			
 		UnRegisterModuleDependences("catalog", "OnBeforeProductAdd", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductAddHandlerLog");
-		UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandlerLog");
+		UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandlerLog");		
 		
 		//UnRegisterModuleDependences("catalog", "OnBeforeProductAdd", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductAddHandler");
 		//UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandler");
@@ -243,7 +243,7 @@ class import_pro1c extends CModule
 	function UnInstallFiles( $arParams = array() )
 	{
 		DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/".$this->MY_DIR."/modules/".$this->MODULE_ID."/install/admin/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/admin");
-		DeleteDirFilesEx("/bitrix/templates/import_pro1c_empty/"); //template
+		DeleteDirFilesEx("/bitrix/templates/import_pro1c_empty/"); //template		
 		DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/".$this->MY_DIR."/modules/".$this->MODULE_ID."/install/themes/.default/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes/.default");//css
 		DeleteDirFilesEx("/bitrix/themes/.default/icons/".$this->MODULE_ID."/");//icons
 

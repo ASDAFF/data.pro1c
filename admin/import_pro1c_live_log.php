@@ -1,6 +1,6 @@
 <?
 /**
- * Copyright (c) 2/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_before.php");
@@ -81,7 +81,7 @@ else
 		<?
 			if (isset($_GET['TEST']) && $_GET['TEST'] == "Y")
 			{				
-				CImportPro1C::TestLiveLog();
+				CImportPro1c::TestLiveLog();
 				$APPLICATION->RestartBuffer();
 				echo "OK";
 				die();
