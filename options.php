@@ -3,12 +3,6 @@
  * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
-###################################################
-# import.pro1c module		                      #
-# http://import.ru                               #
-# mailto:mail@import.ru                          #
-###################################################
-
 IncludeModuleLangFile(__FILE__);
 IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/options.php");
 require_once( "prolog.php" );
