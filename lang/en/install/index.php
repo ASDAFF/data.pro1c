@@ -5,8 +5,8 @@
 
 $MESS ['IMPORT_PRO1C_MODULE_NAME'] = "Advanced exchange with 1C";
 $MESS ['IMPORT_PRO1C_MODULE_DESCRIPTION'] = "Module can dramatically speed up the exchange of standard 1C, only update prices and residues monitor the exchange of real-time in Live log, have a log file for error analysis and performance, configure failover for exchange and see information about recent exchanges.";
-$MESS ['IMPORT_PRO1C_PARTNER_NAME'] = "ASDAFF";
-$MESS ['IMPORT_PRO1C_SITE_URI']= "https://asdaff.github.io/";
+$MESS ['IMPORT_PRO1C_PARTNER_NAME'] = "Import Systems";
+$MESS ['IMPORT_PRO1C_SITE_URI']= "http://import.ru";
 $MESS ['IMPORT_PRO1C_NEED_RIGHT_VER'] = "This solution needs main module version #NEED# or newer.";
 $MESS ['IMPORT_PRO1C_NEED_MODULES'] = "This solution needs module #MODULE#.";
 

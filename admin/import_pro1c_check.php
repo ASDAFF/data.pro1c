@@ -161,7 +161,7 @@ else
 		<tr>
 			<td width="50%" valign="top"><?=GetMessage("import_pro1c_check_source")?>:</td>
 			<td width="50%">
-				<input type="radio" name="import_pro1c_check_catalog" id="import_pro1c_check_catalog_Y" value="Y" 
+				<input type="radio" name="import_pro1c_check_catalog" id="import_pro1c_check_catalog_Y" value="Y"
 					<?if ( $import_pro1c_check_catalog == "Y" ):?>
 						 checked
 					<?endif?>

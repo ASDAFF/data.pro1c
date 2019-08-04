@@ -48,9 +48,9 @@ class import_pro1c extends CModule
 		}
 		
 		// !Twice! Marketplace bug. 2013-03-13
-		$this->PARTNER_NAME = "ASDAFF";
+		$this->PARTNER_NAME = "Import Systems";
 		$this->PARTNER_NAME = GetMessage("IMPORT_PRO1C_PARTNER_NAME");
-		$this->PARTNER_URI = 'https://asdaff.github.io/';
+		$this->PARTNER_URI = 'http://import.ru/';
 
 		$this->MODULE_NAME = GetMessage('IMPORT_PRO1C_MODULE_NAME');
 		$this->MODULE_DESCRIPTION = GetMessage('IMPORT_PRO1C_MODULE_DESCRIPTION');
@@ -202,7 +202,7 @@ class import_pro1c extends CModule
 		UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandler");
 			
 		UnRegisterModuleDependences("catalog", "OnBeforeProductAdd", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductAddHandlerLog");
-		UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandlerLog");		
+		UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandlerLog");
 		
 		//UnRegisterModuleDependences("catalog", "OnBeforeProductAdd", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductAddHandler");
 		//UnRegisterModuleDependences("catalog", "OnBeforeProductUpdate", $this->MODULE_ID, "CImportPro1C", "OnBeforeProductUpdateHandler");
@@ -243,7 +243,7 @@ class import_pro1c extends CModule
 	function UnInstallFiles( $arParams = array() )
 	{
 		DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/".$this->MY_DIR."/modules/".$this->MODULE_ID."/install/admin/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/admin");
-		DeleteDirFilesEx("/bitrix/templates/import_pro1c_empty/"); //template		
+		DeleteDirFilesEx("/bitrix/templates/import_pro1c_empty/"); //template
 		DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/".$this->MY_DIR."/modules/".$this->MODULE_ID."/install/themes/.default/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes/.default");//css
 		DeleteDirFilesEx("/bitrix/themes/.default/icons/".$this->MODULE_ID."/");//icons
 

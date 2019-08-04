@@ -9,7 +9,7 @@ $MESS ['import_pro1c_last_exchange_catalog_import'] = "Описания това
 $MESS ['import_pro1c_last_exchange_catalog_offers'] = "Торговые предложения";
 $MESS ['import_pro1c_last_exchange_catalog_prices'] = "Цены";
 $MESS ['import_pro1c_last_exchange_catalog_rests'] = "Остатки";
-$MESS ['import_pro1c_last_exchange_catalog_notes'] = 
+$MESS ['import_pro1c_last_exchange_catalog_notes'] =
 "До версии формата обмена CML 2.08 цены и остатки выгружались в одном файле с торговыми предложениями offers.xml.
 <br><br>
 Начиная с версии CML 2.08 (в дополнеии Битрикса 4.0.0.0 для 1С, апрель 2014 года) остатки и цены выгружаются в отдельных файлах prices.xml и rests.xml.";
@@ -28,7 +28,7 @@ $MESS ['import_pro1c_last_exchange_order_com'] = 'например';
 $MESS ['import_pro1c_last_exchange_order_button'] = 'Записать';
 
 
-$MESS ['import_pro1c_last_exchange_order_notes'] = 
+$MESS ['import_pro1c_last_exchange_order_notes'] =
 	'Вы можете управлять временем последней выгрузки заказов с сайта в 1С.
 	<br><br>
 	Если время очистить, то при следующем обмене сайт передаст все заказы, которые есть.<br>
