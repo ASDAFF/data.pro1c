@@ -1,7 +1,11 @@
 <?
-class CAskaronPro1CCache
+/**
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ */
+
+class CImportPro1CCache
 {
-	private static $module_id = "askaron.pro1c";
+	private static $module_id = "import.pro1c";
 
 	static public function SetAgentByOptions()
 	{
@@ -12,7 +16,7 @@ class CAskaronPro1CCache
 			$interval_seconds = 15*60;
 		}
 
-		$agent_name = "CAskaronPro1CCache::ClearManagedCacheAgent();";
+		$agent_name = "CImportPro1CCache::ClearManagedCacheAgent();";
 
 		$arFilter = array(
 			"NAME" => $agent_name
@@ -55,7 +59,7 @@ class CAskaronPro1CCache
 	static public function ClearManagedCacheAgent()
 	{
 		self::ClearManagedCache();
-		return "CAskaronPro1CCache::ClearManagedCacheAgent();";
+		return "CImportPro1CCache::ClearManagedCacheAgent();";
 	}
 
 	static private function ClearManagedCache()

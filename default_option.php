@@ -1,6 +1,10 @@
 <?
-$askaron_pro1c_default_option = array(
-	"settings" => 'a:3:{i:0;a:3:{s:6:"ACTIVE";s:1:"Y";s:4:"NAME";s:29:"/bitrix/admin/1c_exchange.php";s:13:"SKIP_PRODUCTS";s:1:"N";}i:1;a:3:{s:6:"ACTIVE";s:1:"Y";s:4:"NAME";s:40:"/bitrix/admin/askaron_pro1c_exchange.php";s:13:"SKIP_PRODUCTS";s:1:"Y";}i:2;a:3:{s:6:"ACTIVE";s:1:"Y";s:4:"NAME";s:20:"/crm/1c_exchange.php";s:13:"SKIP_PRODUCTS";s:1:"N";}}',
+/**
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ */
+
+$import_pro1c_default_option = array(
+	"settings" => 'a:3:{i:0;a:3:{s:6:"ACTIVE";s:1:"Y";s:4:"NAME";s:29:"/bitrix/admin/1c_exchange.php";s:13:"SKIP_PRODUCTS";s:1:"N";}i:1;a:3:{s:6:"ACTIVE";s:1:"Y";s:4:"NAME";s:40:"/bitrix/admin/import_pro1c_exchange.php";s:13:"SKIP_PRODUCTS";s:1:"Y";}i:2;a:3:{s:6:"ACTIVE";s:1:"Y";s:4:"NAME";s:20:"/crm/1c_exchange.php";s:13:"SKIP_PRODUCTS";s:1:"N";}}',
 	"disable_clear_tag_cache_for_script" => "N",
 	"clear_tag_cache_agent_enabled" => "N",
 	"clear_tag_cache_agent_interval" => "15",

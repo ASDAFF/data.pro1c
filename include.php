@@ -1,9 +1,12 @@
 <?
+/**
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ */
+
 ###################################################
-# askaron.pro1c module                            #
-# Copyright (c) 2011-2018 Askaron Systems ltd.    #
-# http://askaron.ru                               #
-# mailto:mail@askaron.ru                          #
+# import.pro1c module                            #
+# http://import.ru                               #
+# mailto:mail@import.ru                          #
 ###################################################
 
 //IncludeModuleLangFile(__FILE__);
@@ -20,13 +23,13 @@ if (!function_exists('htmlspecialcharsbx'))
 	}
 }
 
-CModule::AddAutoloadClasses("askaron.pro1c", array(
-	"CAskaronPro1CTools" => "classes/general/tools.php",
-	"CAskaronPro1COptions" => "classes/general/options.php",
-	"CAskaronPro1CCache" => "classes/general/cache.php",
+CModule::AddAutoloadClasses("import.pro1c", array(
+	"CImportPro1CTools" => "classes/general/tools.php",
+	"CImportPro1COptions" => "classes/general/options.php",
+	"CImportPro1CCache" => "classes/general/cache.php",
 ));
 
-class CAskaronPro1C
+class CImportPro1C
 {
 	static protected $arPropertiesIDCache = array();
 	
@@ -36,7 +39,7 @@ class CAskaronPro1C
 	public static function OnGetDependentModuleHandler()
 	{
 		return Array(
-			"MODULE_ID" => "askaron.pro1c",
+			"MODULE_ID" => "import.pro1c",
 			//"USE" => Array("PUBLIC_SECTION", "ADMIN_SECTION")
 			"USE" => Array("ADMIN_SECTION")
 		);
@@ -44,7 +47,7 @@ class CAskaronPro1C
 
 	public static function OnAfterSetOption_secure_1c_exchange( $value )
 	{
-		$check = COption::GetOptionString( "askaron.pro1c", "check_orders" );
+		$check = COption::GetOptionString( "import.pro1c", "check_orders" );
 		if ( $check == "D"  && $value != "N" )
 		{
 			COption::SetOptionString("sale", "secure_1c_exchange", "N" );
@@ -53,7 +56,7 @@ class CAskaronPro1C
 
 	public static function OnAfterSetOption_DEFAULT_SKIP_SOURCE_CHECK( $value )
 	{
-		$check = COption::GetOptionString( "askaron.pro1c", "check_catalog" );
+		$check = COption::GetOptionString( "import.pro1c", "check_catalog" );
 		if ( $check == "D" && $value != "Y" )
 		{
 			COption::SetOptionString("catalog", "DEFAULT_SKIP_SOURCE_CHECK", "Y" );
@@ -66,9 +69,9 @@ class CAskaronPro1C
 		
 		if (self::IsExchange())
 		{
-			CAskaronPro1CTools::OnPageStartDebugSettings();
+			CImportPro1CTools::OnPageStartDebugSettings();
 
-			if ( COption::GetOptionString( "askaron.pro1c", "disable_clear_tag_cache_for_script") == "Y" )
+			if ( COption::GetOptionString( "import.pro1c", "disable_clear_tag_cache_for_script") == "Y" )
 			{
 				CModule::IncludeModule("iblock");
 				CIBlock::disableClearTagCache();
@@ -94,10 +97,10 @@ class CAskaronPro1C
 
 			self::log( $log_str, 'Step start');
 
-			if (COption::GetOptionString("askaron.pro1c", "forbidden") == "Y")
+			if (COption::GetOptionString("import.pro1c", "forbidden") == "Y")
 			{
 				$APPLICATION->RestartBuffer();
-				$contents = "failure\n" . GetMessage("askaron_pro1c_forbidden_page", array(
+				$contents = "failure\n" . GetMessage("import_pro1c_forbidden_page", array(
 						"#THIS_PAGE#" => $APPLICATION->GetCurPage(true),
 						"#SERVER_NAME#" => $_SERVER["SERVER_NAME"],
 						"#LANG#" => LANG
@@ -125,9 +128,9 @@ class CAskaronPro1C
 					$LAST_STEP = "";
 					$NEW_STEP = "";
 
-					if (isset($_SESSION["ASKARON_PRO1C_STEP"]))
+					if (isset($_SESSION["IMPORT_PRO1C_STEP"]))
 					{
-						$LAST_STEP = $_SESSION["ASKARON_PRO1C_LAST_STEP"];
+						$LAST_STEP = $_SESSION["IMPORT_PRO1C_LAST_STEP"];
 					}
 
 					if (isset($_SESSION["BX_CML2_IMPORT"]["NS"]["STEP"]))
@@ -137,24 +140,24 @@ class CAskaronPro1C
 
 					if ($NEW_STEP > 0 && $NEW_STEP != $LAST_STEP)
 					{
-						self::log($_SESSION["BX_CML2_IMPORT"]["NS"], GetMessage("askaron_pro1c_new_step", array("#STEP#" => $NEW_STEP)));
-						$_SESSION["ASKARON_PRO1C_LAST_STEP"] = $NEW_STEP;
+						self::log($_SESSION["BX_CML2_IMPORT"]["NS"], GetMessage("import_pro1c_new_step", array("#STEP#" => $NEW_STEP)));
+						$_SESSION["IMPORT_PRO1C_LAST_STEP"] = $NEW_STEP;
 					}
 
-					$import_pause = intval(COption::GetOptionString("askaron.pro1c", "import_pause"));
+					$import_pause = intval(COption::GetOptionString("import.pro1c", "import_pause"));
 					if ($import_pause > 0)
 					{
 						//self::log($import_pause );
 						sleep($import_pause);
 					}
 
-					if ( COption::GetOptionString("askaron.pro1c", "copy_exchange_files") == "Y" )
+					if ( COption::GetOptionString("import.pro1c", "copy_exchange_files") == "Y" )
 					if ( $_SESSION["BX_CML2_IMPORT"]["NS"]["STEP"] == 1 )
 					{
 						$dir_from = $_SERVER["DOCUMENT_ROOT"]."/upload/1c_catalog";
 						if ( file_exists( $dir_from.'/'.$_GET["filename"] ) )
 						{
-							$dir_to = $_SERVER["DOCUMENT_ROOT"]."/upload/1c_catalog_copy_askaron_pro1c";
+							$dir_to = $_SERVER["DOCUMENT_ROOT"]."/upload/1c_catalog_copy_import_pro1c";
 							CheckDirPath( $dir_from.'/'.$_GET["filename"] );
 							CopyDirFiles(  $dir_from.'/'.$_GET["filename"],  $dir_to.'/'.$_GET["filename"]);
 
@@ -180,8 +183,8 @@ class CAskaronPro1C
 						if ( $_GET['mode'] == 'deactivate' )
 						{
 							$contents = "success\n".
-								GetMessage("askaron_pro1c_skip_deactivate")."\n".
-								GetMessage("askaron_pro1c_skip_description", array(
+								GetMessage("import_pro1c_skip_deactivate")."\n".
+								GetMessage("import_pro1c_skip_description", array(
 									"#THIS_PAGE#" => $APPLICATION->GetCurPage(true),
 									"#SERVER_NAME#" => $_SERVER["SERVER_NAME"],
 									"#LANG#" => LANG
@@ -190,8 +193,8 @@ class CAskaronPro1C
 						else
 						{
 							$contents = "success\n".
-								GetMessage("askaron_pro1c_skip_products")."\n".
-								GetMessage("askaron_pro1c_skip_description", array(
+								GetMessage("import_pro1c_skip_products")."\n".
+								GetMessage("import_pro1c_skip_description", array(
 									"#THIS_PAGE#" => $APPLICATION->GetCurPage(true),
 									"#SERVER_NAME#" => $_SERVER["SERVER_NAME"],
 									"#LANG#" => LANG
@@ -223,7 +226,7 @@ class CAskaronPro1C
 	{
 		if (self::IsExchange())
 		{
-			$arFields["ASKARON_PRO1C_ON_START"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_START"] = getmicrotime();
 		}
 	}
 
@@ -232,7 +235,7 @@ class CAskaronPro1C
 	{
 		if (self::IsExchange())
 		{
-			$arFields["ASKARON_PRO1C_ON_START"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_START"] = getmicrotime();
 		}
 	}
 
@@ -248,7 +251,7 @@ class CAskaronPro1C
 		//self::OnBeforeWriteElement($arFields, "add");
 		if (self::IsExchange())
 		{
-			$arFields["ASKARON_PRO1C_ON_BEFORE_FIRST"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_BEFORE_FIRST"] = getmicrotime();
 		}
 	}
 
@@ -258,7 +261,7 @@ class CAskaronPro1C
 		//self::OnBeforeWriteElement($arFields, "update");
 		if (self::IsExchange())
 		{
-			$arFields["ASKARON_PRO1C_ON_BEFORE_FIRST"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_BEFORE_FIRST"] = getmicrotime();
 		}
 	}
 
@@ -291,7 +294,7 @@ class CAskaronPro1C
 				$label = "OnBeforeIBlockElementUpdate";
 			}
 
-			if (  COption::GetOptionString("askaron.pro1c", "log_element") == "Y" )
+			if (  COption::GetOptionString("import.pro1c", "log_element") == "Y" )
 			{
 				self::log($arFields, $label);
 			}
@@ -324,9 +327,9 @@ class CAskaronPro1C
 
 			//self::log($_SESSION, "\$_SESSION");
 
-			$arFields["ASKARON_PRO1C_ON_BEFORE_LAST"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_BEFORE_LAST"] = getmicrotime();
 
-			if (  COption::GetOptionString("askaron.pro1c", "fast_write") == "Y" )
+			if (  COption::GetOptionString("import.pro1c", "fast_write") == "Y" )
 			{
 				if( $_GET['type'] == 'catalog' && $_GET['mode'] == 'import' && strstr($_GET['filename'], 'import') )
 				{
@@ -337,7 +340,7 @@ class CAskaronPro1C
 					{
 						if ( isset($arFields["PROPERTY_VALUES"]) )				
 						{
-							$arFields["ASKARON_PRO1C_TMP_PROPERTY_VALUES"] = $arFields["PROPERTY_VALUES"];
+							$arFields["IMPORT_PRO1C_TMP_PROPERTY_VALUES"] = $arFields["PROPERTY_VALUES"];
 							unset( $arFields["PROPERTY_VALUES"] );
 						}
 					}
@@ -361,7 +364,7 @@ class CAskaronPro1C
 		self::OnAfterWriteElement($arFields, "add" );
 		if (self::IsExchange())
 		{
-			$arFields["ASKARON_PRO1C_ON_AFTER_FIRST"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_AFTER_FIRST"] = getmicrotime();
 		}
 	}
 
@@ -371,7 +374,7 @@ class CAskaronPro1C
 		self::OnAfterWriteElement($arFields, "update" );
 		if (self::IsExchange())
 		{
-			$arFields["ASKARON_PRO1C_ON_AFTER_FIRST"] = getmicrotime();
+			$arFields["IMPORT_PRO1C_ON_AFTER_FIRST"] = getmicrotime();
 		}
 	}
 
@@ -387,12 +390,12 @@ class CAskaronPro1C
 			{
 				if( $arFields["ID"]>0 )
 				{
-					$message = GetMessage( "askaron_pro1c_element_add_success", array("#ID#" => $arFields["ID"] ) );
+					$message = GetMessage( "import_pro1c_element_add_success", array("#ID#" => $arFields["ID"] ) );
 					$bWriteOk = true;
 				}
 				else
 				{
-					$message = GetMessage( "askaron_pro1c_element_add_error", array("#RESULT_MESSAGE#" => $arFields["RESULT_MESSAGE"] ) );
+					$message = GetMessage( "import_pro1c_element_add_error", array("#RESULT_MESSAGE#" => $arFields["RESULT_MESSAGE"] ) );
 				}
 			}
 			
@@ -400,20 +403,20 @@ class CAskaronPro1C
 			{
 				if( $arFields["RESULT"] )
 				{
-					$message = GetMessage( "askaron_pro1c_element_update_success", array("#ID#" => $arFields["ID"] ) );
+					$message = GetMessage( "import_pro1c_element_update_success", array("#ID#" => $arFields["ID"] ) );
 					$bWriteOk = true;
 				}
 				else
 				{
-					$message = GetMessage( "askaron_pro1c_element_update_error", array( "#ID#" => $arFields["ID"],  "#RESULT_MESSAGE#" => $arFields["RESULT_MESSAGE"] ) );				
+					$message = GetMessage( "import_pro1c_element_update_error", array( "#ID#" => $arFields["ID"],  "#RESULT_MESSAGE#" => $arFields["RESULT_MESSAGE"] ) );
 				}
 			}
 			
-			if ( $bWriteOk && isset( $arFields["ASKARON_PRO1C_TMP_PROPERTY_VALUES"] ) )
+			if ( $bWriteOk && isset( $arFields["IMPORT_PRO1C_TMP_PROPERTY_VALUES"] ) )
 			{
 				$ELEMENT_ID = $arFields["ID"];
 				$IBLOCK_ID = $arFields["IBLOCK_ID"];
-				$arValues = $arFields["ASKARON_PRO1C_TMP_PROPERTY_VALUES"];
+				$arValues = $arFields["IMPORT_PRO1C_TMP_PROPERTY_VALUES"];
 				
 				if ( $ELEMENT_ID > 0 && $IBLOCK_ID > 0 && is_array( $arValues ) && count( $arValues ) > 0 )
 				{
@@ -460,11 +463,11 @@ class CAskaronPro1C
 				}
 			}
 			
-			if ( isset($arFields["ASKARON_PRO1C_ON_BEFORE_LAST"]) )
+			if ( isset($arFields["IMPORT_PRO1C_ON_BEFORE_LAST"]) )
 			{
 				$message .= "\n".GetMessage( 
-						"askaron_pro1c_element_write_time",
-						array("#TIME#" => round(getmicrotime() - $arFields["ASKARON_PRO1C_ON_BEFORE_LAST"], 6 ) ) );
+						"import_pro1c_element_write_time",
+						array("#TIME#" => round(getmicrotime() - $arFields["IMPORT_PRO1C_ON_BEFORE_LAST"], 6 ) ) );
 			}
 			
 			self::log($message);
@@ -501,13 +504,13 @@ class CAskaronPro1C
 
 			$time = getmicrotime();
 
-			$total_time = round( $time - $arFields["ASKARON_PRO1C_ON_START"], 6 );
-			$before_events_time = round( $arFields["ASKARON_PRO1C_ON_BEFORE_LAST"] - $arFields["ASKARON_PRO1C_ON_BEFORE_FIRST"], 6 );
-			$after_events_time = round( $time - $arFields["ASKARON_PRO1C_ON_AFTER_FIRST"], 6 );
+			$total_time = round( $time - $arFields["IMPORT_PRO1C_ON_START"], 6 );
+			$before_events_time = round( $arFields["IMPORT_PRO1C_ON_BEFORE_LAST"] - $arFields["IMPORT_PRO1C_ON_BEFORE_FIRST"], 6 );
+			$after_events_time = round( $time - $arFields["IMPORT_PRO1C_ON_AFTER_FIRST"], 6 );
 
-			$start_time = round( $arFields["ASKARON_PRO1C_ON_BEFORE_FIRST"] - $arFields["ASKARON_PRO1C_ON_START"] , 6 );
+			$start_time = round( $arFields["IMPORT_PRO1C_ON_BEFORE_FIRST"] - $arFields["IMPORT_PRO1C_ON_START"] , 6 );
 
-			$message = GetMessage( "askaron_pro1c_element_total_time",
+			$message = GetMessage( "import_pro1c_element_total_time",
 							array(
 								"#TOTAL_TIME#" => $total_time,
 								"#BEFORE_EVENTS_TIME#" => $before_events_time,
@@ -573,7 +576,7 @@ class CAskaronPro1C
 
 	private static function EmptyProduct($ID, &$arFields)
 	{
-		if ( COption::GetOptionString( "askaron.pro1c", "quantity_set_to_zero") == "Y" )
+		if ( COption::GetOptionString( "import.pro1c", "quantity_set_to_zero") == "Y" )
 		{
 			// skip import.xml file
 			if( !($_GET['type'] == 'catalog' && $_GET['mode'] == 'import' && strstr($_GET['filename'], 'import') ) )
@@ -608,7 +611,7 @@ class CAskaronPro1C
 							// check if element or offer
 							if (isset($arCatalogInfo["ADDITIONAL"]["LIST"][$arElementFileds["IBLOCK_ID"]]))
 							{
-								self::log($arFields, GetMessage("askaron_pro1c_empty_quantity"));
+								self::log($arFields, GetMessage("import_pro1c_empty_quantity"));
 								$arFields["QUANTITY"] = 0;
 							}
 						}
@@ -698,16 +701,16 @@ class CAskaronPro1C
 			
 			$step_time = round(getmicrotime() - self::$microtime_page_start, 4);
 			
-			self::log($step_time, GetMessage("askaron_pro1c_step_time") );
-			self::log($content_converted, GetMessage("askaron_pro1c_step_result") );
+			self::log($step_time, GetMessage("import_pro1c_step_time") );
+			self::log($content_converted, GetMessage("import_pro1c_step_result") );
 			
-			if ( COption::GetOptionString( "askaron.pro1c", "live_log") == "Y" )
+			if ( COption::GetOptionString( "import.pro1c", "live_log") == "Y" )
 			{
 				if ( CModule::IncludeModule('pull') )
 				{
-					CPullWatch::AddToStack('ASKARON_PRO1C_LIVE_LOG',
+					CPullWatch::AddToStack('IMPORT_PRO1C_LIVE_LOG',
 						Array(
-							'module_id' => 'askaron.pro1c',
+							'module_id' => 'import.pro1c',
 							'command' => 'live_log',
 							'params' => Array(
 								"TIME" => ConvertTimeStamp(false, FULL),
@@ -733,14 +736,14 @@ class CAskaronPro1C
 	{
 		if ( CModule::IncludeModule('pull') )
 		{
-			CPullWatch::AddToStack('ASKARON_PRO1C_LIVE_LOG',
+			CPullWatch::AddToStack('IMPORT_PRO1C_LIVE_LOG',
 				Array(
-					'module_id' => 'askaron.pro1c',
+					'module_id' => 'import.pro1c',
 					'command' => 'live_log',
 					'params' => Array(
 						"URL" => "test",
 						"TIME" => ConvertTimeStamp(false, FULL),
-						"DATA" => GetMessage("askaron_pro1c_live_log_works")
+						"DATA" => GetMessage("import_pro1c_live_log_works")
 					)
 				)
 			);
@@ -756,7 +759,7 @@ class CAskaronPro1C
 	
 	private static function log($value, $label = "")
 	{
-		if ( COption::GetOptionString("askaron.pro1c", "log") == "Y" )
+		if ( COption::GetOptionString("import.pro1c", "log") == "Y" )
 		{
 			if ( is_array( $value ) || is_object( $value ) )
 			{
@@ -774,10 +777,10 @@ class CAskaronPro1C
 
 			if ( !defined("LOG_FILENAME") )
 			{
-				define( "LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/log_askaron_pro1c__".COption::GetOptionString( "askaron.pro1c", "random_value" ).".txt" );
+				define( "LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/log_import_pro1c__".COption::GetOptionString( "import.pro1c", "random_value" ).".txt" );
 			}
 			
-			$max_size = COption::GetOptionString( "askaron.pro1c", "log_max_size") * 1024 * 1024;
+			$max_size = COption::GetOptionString( "import.pro1c", "log_max_size") * 1024 * 1024;
 			
 			if ( $max_size > 0 )
 			{
@@ -796,15 +799,15 @@ class CAskaronPro1C
 			if ( CheckVersion( SM_VERSION, '11.0.14' ) )
 			{
 				// main module new version 11.0.14
-				$log_trace = COption::GetOptionString( "askaron.pro1c", "log_trace");
+				$log_trace = COption::GetOptionString( "import.pro1c", "log_trace");
 				$log_trace = intval($log_trace);
 
-				AddMessage2Log( $text, "askaron.pro1c", $log_trace, false );
+				AddMessage2Log( $text, "import.pro1c", $log_trace, false );
 			}
 			else
 			{
 				// main module old version before 11.0.14
-				AddMessage2Log( $text, "askaron.pro1c" );
+				AddMessage2Log( $text, "import.pro1c" );
 			}
 		}
 	}
@@ -867,7 +870,7 @@ class CAskaronPro1C
 	{
 		$result = array();
 		
-		$str = COption::GetOptionString("askaron.pro1c", "settings");
+		$str = COption::GetOptionString("import.pro1c", "settings");
 		
 		if ( strlen($str) > 0 )
 		{
@@ -892,7 +895,7 @@ class CAskaronPro1C
 			// bug over 2000
 			if ( strlen( $str ) <= 2000 )
 			{
-				$result = COption::SetOptionString( "askaron.pro1c", "settings", $str );
+				$result = COption::SetOptionString( "import.pro1c", "settings", $str );
 			}
 		}
 		
@@ -921,7 +924,7 @@ class CAskaronPro1C
 	{
 		$result = "";
 		
-		$datetime = COption::GetOptionString( "askaron.pro1c", $option_name );
+		$datetime = COption::GetOptionString( "import.pro1c", $option_name );
 		if ( strlen( $datetime ) > 0 )
 		{
 			$format = "YYYY-MM-DD HH:MI:SS";
@@ -968,23 +971,23 @@ class CAskaronPro1C
 			$arExchangeSettings = self::GetExchangeSettings();
 			if ( !isset( $arExchangeSettings["SKIP_PRODUCTS"] ) || $arExchangeSettings["SKIP_PRODUCTS"] !== "Y" )
 			{
-				COption::SetOptionString("askaron.pro1c", "last_success_import_date", $time_string );
+				COption::SetOptionString("import.pro1c", "last_success_import_date", $time_string );
 			}		
 		}
 		
 		if( $_GET['type'] == 'catalog' && $_GET['mode'] == 'import' && strstr($_GET['filename'], 'offers') )
 		{
-			COption::SetOptionString("askaron.pro1c", "last_success_offers_date", $time_string );
+			COption::SetOptionString("import.pro1c", "last_success_offers_date", $time_string );
 		}		
 		
 		if( $_GET['type'] == 'catalog' && $_GET['mode'] == 'import' && strstr($_GET['filename'], 'prices') )
 		{
-			COption::SetOptionString("askaron.pro1c", "last_success_prices_date", $time_string );
+			COption::SetOptionString("import.pro1c", "last_success_prices_date", $time_string );
 		}
 		
 		if( $_GET['type'] == 'catalog' && $_GET['mode'] == 'import' && strstr($_GET['filename'], 'rests') )
 		{
-			COption::SetOptionString("askaron.pro1c", "last_success_rests_date", $time_string );
+			COption::SetOptionString("import.pro1c", "last_success_rests_date", $time_string );
 		}		
 	}
 
@@ -1010,7 +1013,7 @@ class CAskaronPro1C
 		}
 		else
 		{
-			$result = $_SERVER["DOCUMENT_ROOT"]."/log_askaron_pro1c__".COption::GetOptionString( "askaron.pro1c", "random_value" ).".txt";
+			$result = $_SERVER["DOCUMENT_ROOT"]."/log_import_pro1c__".COption::GetOptionString( "import.pro1c", "random_value" ).".txt";
 		}
 		
 		return $result;

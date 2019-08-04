@@ -1,11 +1,15 @@
 <?if(!check_bitrix_sessid()) return;?>
 <?
-global $askaron_pro1c_global_errors;
-$askaron_pro1c_global_errors = is_array($askaron_pro1c_global_errors) ? $askaron_pro1c_global_errors : array();
+/**
+ * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ */
 
-if(is_array($askaron_pro1c_global_errors) && count($askaron_pro1c_global_errors)>0)
+global $import_pro1c_global_errors;
+$import_pro1c_global_errors = is_array($import_pro1c_global_errors) ? $import_pro1c_global_errors : array();
+
+if(is_array($import_pro1c_global_errors) && count($import_pro1c_global_errors)>0)
 {
-	foreach($askaron_pro1c_global_errors as $val)
+	foreach($import_pro1c_global_errors as $val)
 	{
 		$alErrors .= $val."<br>";
 	}
