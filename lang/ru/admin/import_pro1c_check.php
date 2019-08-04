@@ -1,10 +1,6 @@
 <?
-/**
- * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
- */
-
-$MESS ['import_pro1c_check_title'] = "Проверка источника запроса на сайте";
-$MESS ['import_pro1c_check_notes'] = '
+$MESS ['askaron_pro1c_check_title'] = "Проверка источника запроса на сайте";
+$MESS ['askaron_pro1c_check_notes'] = '
 	<p>Некоторые пользователи видят ошибки: 
 	<br>при выгрузке товаров
 	<br><em>Ошибка проверки источника запроса. Обновите модуль обмена или отключите проверку в настройках компонента</em>
@@ -17,20 +13,20 @@ $MESS ['import_pro1c_check_notes'] = '
 	
 	<p>Модуль позволяет отключить проверку источника запроса и сделать, чтобы стандартный обмен заработал со старой 1С.</p>
 
-	<p><a href="http://import.ru/api_help/course1/lesson111/" target="_blank">Описание в документации</a></p>
+	<p><a href="http://askaron.ru/api_help/course1/lesson111/" target="_blank">Описание в документации</a></p>
 ';
 
 
-//$MESS ['import_pro1c_check_help'] = "Зачем это надо?";
-$MESS ['import_pro1c_check_catalog'] = "Импорт товаров из 1С";
-$MESS ['import_pro1c_check_orders'] = "Обмен заказами с 1С";
+//$MESS ['askaron_pro1c_check_help'] = "Зачем это надо?";
+$MESS ['askaron_pro1c_check_catalog'] = "Импорт товаров из 1С";
+$MESS ['askaron_pro1c_check_orders'] = "Обмен заказами с 1С";
 
-$MESS ['import_pro1c_check_source'] = "Проверка источника запроса на сайте (контроль сессий)";
-$MESS ['import_pro1c_check_source_Y'] = "Включена (у вас новый обмен в 1С)";
-$MESS ['import_pro1c_check_source_N'] = "Отключена (у вас старый обмен в 1С)";
+$MESS ['askaron_pro1c_check_source'] = "Проверка источника запроса на сайте (контроль сессий)";
+$MESS ['askaron_pro1c_check_source_Y'] = "Включена (у вас новый обмен в 1С)";
+$MESS ['askaron_pro1c_check_source_N'] = "Отключена (у вас старый обмен в 1С)";
 
-$MESS ['import_pro1c_check_source_D'] = "Отключена постоянно (модуль препятствует включать опцию при обмене, оба обмена возможны)";
-$MESS ['import_pro1c_check_source_catalog_help'] = "В случае «Отключена постоянно» возможна работа проекта, с двумя обменами разных версий.
+$MESS ['askaron_pro1c_check_source_D'] = "Отключена постоянно (модуль препятствует включать опцию при обмене, оба обмена возможны)";
+$MESS ['askaron_pro1c_check_source_catalog_help'] = "В случае «Отключена постоянно» возможна работа проекта, с двумя обменами разных версий.
 	Например, выгрузка товаров из старой 1С в один инфоблок и выгрузка товаров из новой 1С в другой инфоблок.
 	<br><br>
 	Оба обмена работают без контроля сессий, но это не страшно.
@@ -39,15 +35,15 @@ $MESS ['import_pro1c_check_source_catalog_help'] = "В случае «Отклю
 	";
 
 
-$MESS ['import_pro1c_check_source_D'] = "Отключена постоянно (модуль препятствует включать опцию при обмене, оба обмена возможны)";
-$MESS ['import_pro1c_check_source_orders_help'] = "В случае «Отключена постоянно» возможна работа проекта, с двумя обменами разных версий.
+$MESS ['askaron_pro1c_check_source_D'] = "Отключена постоянно (модуль препятствует включать опцию при обмене, оба обмена возможны)";
+$MESS ['askaron_pro1c_check_source_orders_help'] = "В случае «Отключена постоянно» возможна работа проекта, с двумя обменами разных версий.
 	Например, обмен заказами со старой 1С и обмен с Битрикс24.
 	<br><br>
 	Оба обмена работают без контроля сессий, но это не страшно.
 	<br><br>
 	Чтобы обмены заказами не путались рекомендуем указывать разные имена файлов обмена, например:<br><br>
 	<strong>/bitrix/admin/1c_exchange.php</strong> в настройках обмена со стороны 1С<br><br>
-	<strong>/bitrix/admin/import_pro1c_exchange.php</strong> в настройках обмена со стороны Битрикс24
+	<strong>/bitrix/admin/askaron_pro1c_exchange.php</strong> в настройках обмена со стороны Битрикс24
 	<br><br>
 	Код этих двух файлов обмена абсолютно одинаковый. Файлы обмена работают одинаково.
 	";
