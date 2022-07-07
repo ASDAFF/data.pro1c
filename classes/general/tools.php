@@ -1,9 +1,5 @@
 <?
-/**
- * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
- */
-
-class CImportPro1CTools
+class CDataPro1CTools
 {
 	static public function OnPageStartDebugSettings()
 	{
@@ -12,8 +8,8 @@ class CImportPro1CTools
 		if ( !defined("ADMIN_SECTION") || ADMIN_SECTION !== true )
 		{
 			// do not use default template
-			define('SITE_TEMPLATE_ID', 'import_pro1c_empty');
-			define("SITE_TEMPLATE_PATH", "/bitrix/templates/import_pro1c_empty");
+			define('SITE_TEMPLATE_ID', 'data_pro1c_empty');
+			define("SITE_TEMPLATE_PATH", "/bitrix/templates/data_pro1c_empty");
 		}
 
 		// strange code for future connections
@@ -48,13 +44,13 @@ class CImportPro1CTools
 		}
 
 
-		$time_limit = COption::GetOptionString("import.pro1c", "time_limit");
+		$time_limit = COption::GetOptionString("data.pro1c", "time_limit");
 		if ( strlen( $time_limit ) > 0 )
 		{
 			@set_time_limit( $time_limit );
 		}
 
-		$memory_limit = COption::GetOptionString("import.pro1c", "memory_limit");
+		$memory_limit = COption::GetOptionString("data.pro1c", "memory_limit");
 		if ( strlen( $memory_limit ) > 0 )
 		{
 			$memory_limit_value = intval( $memory_limit );

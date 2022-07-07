@@ -1,11 +1,7 @@
 <?
-/**
- * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
- */
-
-class CImportPro1CCache
+class CDataPro1CCache
 {
-	private static $module_id = "import.pro1c";
+	private static $module_id = "data.pro1c";
 
 	static public function SetAgentByOptions()
 	{
@@ -16,7 +12,7 @@ class CImportPro1CCache
 			$interval_seconds = 15*60;
 		}
 
-		$agent_name = "CImportPro1CCache::ClearManagedCacheAgent();";
+		$agent_name = "CDataPro1CCache::ClearManagedCacheAgent();";
 
 		$arFilter = array(
 			"NAME" => $agent_name
@@ -59,7 +55,7 @@ class CImportPro1CCache
 	static public function ClearManagedCacheAgent()
 	{
 		self::ClearManagedCache();
-		return "CImportPro1CCache::ClearManagedCacheAgent();";
+		return "CDataPro1CCache::ClearManagedCacheAgent();";
 	}
 
 	static private function ClearManagedCache()

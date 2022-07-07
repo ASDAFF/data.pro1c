@@ -1,33 +1,29 @@
 <?
-/**
- * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
- */
-
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_before.php");
 require_once( dirname(__FILE__)."/../prolog.php" );
 
 IncludeModuleLangFile(__FILE__);
 
 // messages
-$install_status=CModule::IncludeModuleEx("import.pro1c");
+$install_status=CModule::IncludeModuleEx("data.pro1c");
 
 // demo expired (3)
 if( $install_status==3 )
 {
-	$APPLICATION->SetTitle(GetMessage("import_pro1c_title"));
+	$APPLICATION->SetTitle(GetMessage("data_pro1c_title"));
 	require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_after.php");
 	CAdminMessage::ShowMessage(
 		Array(
 			"TYPE"=>"ERROR",
-			"MESSAGE"=>GetMessage("import_pro1c_prolog_status_demo_expired"),
-			"DETAILS"=>GetMessage("import_pro1c_prolog_buy_html"),
+			"MESSAGE"=>GetMessage("data_pro1c_prolog_status_demo_expired"),
+			"DETAILS"=>GetMessage("data_pro1c_prolog_buy_html"),
 			"HTML"=>true
 		)
 	);
 }
 else
 {
-	$log_file_name = CImportPro1c::GetLogFileName();
+	$log_file_name = CDataPro1c::GetLogFileName();
 	$bFileExists = file_exists ( $log_file_name );
 	$file_size = "";
 	$file_time = "";
@@ -57,7 +53,7 @@ else
 		$arResult["DOWNLOAD_URL"] = $url;
 	}
 
-	$RIGHT=$APPLICATION->GetGroupRight("import.pro1c");
+	$RIGHT=$APPLICATION->GetGroupRight("data.pro1c");
 	$RIGHT_W = ($RIGHT>="W");
 	$RIGHT_R = ($RIGHT>="R");
 	if( $RIGHT=="D" )
@@ -70,33 +66,33 @@ else
 		if (
 			check_bitrix_sessid()
 				&&
-			$_REQUEST['import_pro1c_update'] == "Y"
+			$_REQUEST['data_pro1c_update'] == "Y"
 		)
 		{
-			if ( intval( $_REQUEST["import_pro1c_count_lines"] ) > 0 )
+			if ( intval( $_REQUEST["data_pro1c_count_lines"] ) > 0 )
 			{
-				$arResult["COUNT_LINES"] = intval( $_REQUEST["import_pro1c_count_lines"] );
+				$arResult["COUNT_LINES"] = intval( $_REQUEST["data_pro1c_count_lines"] );
 			}
 
-			//$arResult["FILTER_TEXT"] = $_REQUEST["import_pro1c_filter_text"];
+			//$arResult["FILTER_TEXT"] = $_REQUEST["data_pro1c_filter_text"];
 		}
 
 		if (
 			check_bitrix_sessid()
 				&&
-			$_REQUEST['import_pro1c_clear'] == "Y"
+			$_REQUEST['data_pro1c_clear'] == "Y"
 				&&
 			$RIGHT_W
 		)
 		{
 			@file_put_contents( $arResult["FILE_ABS_PATH"], "" );
-			LocalRedirect( $APPLICATION->GetCurPageParam( "", array("import_pro1c_clear") ) );
+			LocalRedirect( $APPLICATION->GetCurPageParam( "", array("data_pro1c_clear") ) );
 		}
 
 	}
 
 	// Title
-	$APPLICATION->SetTitle(GetMessage("import_pro1c_log_view_title"));
+	$APPLICATION->SetTitle(GetMessage("data_pro1c_log_view_title"));
 	require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_after.php");
 	?>
 
@@ -109,8 +105,8 @@ else
 		CAdminMessage::ShowMessage(
 			Array(
 				"TYPE"=>"OK",
-				"MESSAGE"=>GetMessage("import_pro1c_prolog_status_demo"),
-				"DETAILS"=>GetMessage("import_pro1c_prolog_buy_html"),
+				"MESSAGE"=>GetMessage("data_pro1c_prolog_status_demo"),
+				"DETAILS"=>GetMessage("data_pro1c_prolog_buy_html"),
 				"HTML"=>true
 			)
 		);
@@ -120,18 +116,18 @@ else
 	<table>
 		<tr>
 			<td valign="top">
-				<a href="settings.php?mid=import.pro1c&lang=<?=LANGUAGE_ID?>&mid_menu=2"><?=GetMessage("IMPORT_PRO1C_NASTROYKI_MODULA")?></a>:
+				<a href="settings.php?mid=data.pro1c&lang=<?=LANGUAGE_ID?>&mid_menu=2"><?=GetMessage("DATA_PRO1C_NASTROYKI_MODULA")?></a>:
 			</td>
 
 			<td valign="top">
-				<?=GetMessage("IMPORT_PRO1C_ZAPISYVATQ_VSE_SAGI")?><?if ( COption::GetOptionString( "import.pro1c", "log" ) == "Y" ):?>
-					<strong><?=GetMessage("IMPORT_PRO1C_DA")?></strong>
+				<?=GetMessage("DATA_PRO1C_ZAPISYVATQ_VSE_SAGI")?><?if ( COption::GetOptionString( "data.pro1c", "log" ) == "Y" ):?>
+					<strong><?=GetMessage("DATA_PRO1C_DA")?></strong>
 				<?else:?>
-					<strong><?=GetMessage("IMPORT_PRO1C_NET")?></strong>
+					<strong><?=GetMessage("DATA_PRO1C_NET")?></strong>
 				<?endif?>
 				<br>
-				<?=GetMessage("IMPORT_PRO1C_MAKSIMALQNYY_RAZMER")?><strong><?=COption::GetOptionString( "import.pro1c", "log_max_size" )?></strong>
-				<?=GetMessage("IMPORT_PRO1C_MEGABAYT")?></td>
+				<?=GetMessage("DATA_PRO1C_MAKSIMALQNYY_RAZMER")?><strong><?=COption::GetOptionString( "data.pro1c", "log_max_size" )?></strong>
+				<?=GetMessage("DATA_PRO1C_MEGABAYT")?></td>
 		<tr>
 	</table>
 
@@ -141,7 +137,7 @@ else
 		CAdminMessage::ShowMessage(
 			Array(
 				"TYPE"=>"ERROR",
-				"MESSAGE"=>GetMessage("import_pro1c_log_view_file_not_found"),
+				"MESSAGE"=>GetMessage("data_pro1c_log_view_file_not_found"),
 				"DETAILS"=>htmlspecialcharsbx( $arResult["FILE_ABS_PATH"] ),
 				"HTML"=>true
 			)
@@ -155,11 +151,11 @@ else
 					<td valign="top">
 
 						<input type="submit"
-							   name="import_pro1c_clear"
-							   value="<?=GetMessage("import_pro1c_clear")?>"
-							   onclick="return confirm( '<?=GetMessage("import_pro1c_confirm")?>' );"
+							   name="data_pro1c_clear"
+							   value="<?=GetMessage("data_pro1c_clear")?>"
+							   onclick="return confirm( '<?=GetMessage("data_pro1c_confirm")?>' );"
 						/>
-						<input type="hidden" name="import_pro1c_clear" value="Y" />
+						<input type="hidden" name="data_pro1c_clear" value="Y" />
 						<?=bitrix_sessid_post()?>
 
 					</td>
@@ -170,9 +166,9 @@ else
 
 						<br>
 						<?=CFile::FormatSize( $arResult["file_size"] )?>,
-						<?=GetMessage("import_pro1c_changed");?> <?=$arResult["file_time"]?>,
+						<?=GetMessage("data_pro1c_changed");?> <?=$arResult["file_time"]?>,
 						<?if ( strlen( $arResult["DOWNLOAD_URL"] ) ):?>
-							<a target="_blank" href="<?=$arResult["DOWNLOAD_URL"]?>"><?=GetMessage("IMPORT_PRO1C_OTKRYTQ_V_NOVOY_VKLA")?></a>
+							<a target="_blank" href="<?=$arResult["DOWNLOAD_URL"]?>"><?=GetMessage("DATA_PRO1C_OTKRYTQ_V_NOVOY_VKLA")?></a>
 						<?endif?>
 
 					</td>
@@ -185,15 +181,15 @@ else
 			<table>
 				<tr>
 					<td>
-						<input type="submit" name="import_pro1c_update" value="<?=GetMessage("import_pro1c_show")?>" />
-						<input type="hidden" name="import_pro1c_update" value="Y" />
+						<input type="submit" name="data_pro1c_update" value="<?=GetMessage("data_pro1c_show")?>" />
+						<input type="hidden" name="data_pro1c_update" value="Y" />
 					</td>
 					<td>
-						<?=GetMessage("IMPORT_PRO1C_POSLEDNIE")?>
+						<?=GetMessage("DATA_PRO1C_POSLEDNIE")?>
 					</td>
 					<td>
-						<input name="import_pro1c_count_lines" value="<?=$arResult["COUNT_LINES"]?>">
-						<?=GetMessage("IMPORT_PRO1C_STROK1")?>
+						<input name="data_pro1c_count_lines" value="<?=$arResult["COUNT_LINES"]?>">
+						<?=GetMessage("DATA_PRO1C_STROK1")?>
 						<?$command = "cat ".escapeshellarg($arResult["FILE_ABS_PATH"])." | wc -l;"?>
 						<?echo `$command`?>
 					</td>

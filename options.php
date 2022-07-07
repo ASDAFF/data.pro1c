@@ -1,19 +1,10 @@
 <?
-/**
- * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
- */
-
-###################################################
-# import.pro1c module		                      #
-# http://import.ru                               #
-# mailto:mail@import.ru                          #
-###################################################
 
 IncludeModuleLangFile(__FILE__);
 IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/options.php");
 require_once( "prolog.php" );
 
-$module_id = "import.pro1c";
+$module_id = "data.pro1c";
 $install_status = CModule::IncludeModuleEx($module_id);
 
 if( $install_status==0 )
@@ -26,8 +17,8 @@ elseif( $install_status==3 )
 	CAdminMessage::ShowMessage(
 		Array(
 			"TYPE"=>"ERROR",
-			"MESSAGE" => GetMessage("import_pro1c_prolog_status_demo_expired"),
-			"DETAILS"=> GetMessage("import_pro1c_prolog_buy_html"),
+			"MESSAGE" => GetMessage("data_pro1c_prolog_status_demo_expired"),
+			"DETAILS"=> GetMessage("data_pro1c_prolog_buy_html"),
 			"HTML"=>true
 		)
 	);
@@ -37,20 +28,20 @@ else
 	// novie nastroyki delaem cherez cpisok nastroek
 	$arGroups = array(
 		"clear_cache" => array(
-			"NAME" => GetMessage("import_pro1c_header_clear_cache"),
-			"HELP" => GetMessage("import_pro1c_header_clear_cache_help"),
+			"NAME" => GetMessage("data_pro1c_header_clear_cache"),
+			"HELP" => GetMessage("data_pro1c_header_clear_cache_help"),
 		),
 		"failure_resistance" => array(
-			"NAME" => GetMessage("import_pro1c_header_failure_resistance"),
+			"NAME" => GetMessage("data_pro1c_header_failure_resistance"),
 		),
 		"debug" => array(
-			"NAME" => "",//GetMessage("import_pro1c_header_debug"),
+			"NAME" => "",//GetMessage("data_pro1c_header_debug"),
 		),
 		"fast" => array(
-			"NAME" => GetMessage("import_pro1c_header_fast"),
+			"NAME" => GetMessage("data_pro1c_header_fast"),
 		),
 		"quantity" => array(
-			"NAME" => GetMessage("import_pro1c_header_quantity"),
+			"NAME" => GetMessage("data_pro1c_header_quantity"),
 		),
 
 	);
@@ -61,9 +52,9 @@ else
 		"CODE" => "disable_clear_tag_cache_for_script",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_disable_clear_tag_cache_for_script"),
+		"NAME" => GetMessage("data_pro1c_disable_clear_tag_cache_for_script"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_disable_clear_tag_cache_for_script_help"),
+		"HELP" => GetMessage("data_pro1c_disable_clear_tag_cache_for_script_help"),
 		"GROUP" =>"clear_cache",
 	);
 
@@ -81,9 +72,9 @@ else
 		"CODE" => "clear_tag_cache_agent_enabled",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_clear_tag_cache_agent_enabled"),
+		"NAME" => GetMessage("data_pro1c_clear_tag_cache_agent_enabled"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_clear_tag_cache_agent_enabled_help", array( "#LAST_DATE#" => $last_date )),
+		"HELP" => GetMessage("data_pro1c_clear_tag_cache_agent_enabled_help", array( "#LAST_DATE#" => $last_date )),
 		"GROUP" =>"clear_cache",
 	);
 
@@ -91,11 +82,11 @@ else
 		"CODE" => "clear_tag_cache_agent_interval",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_clear_tag_cache_agent_interval"),
-		"NAME2" => GetMessage("import_pro1c_clear_tag_cache_agent_interval_2"),
+		"NAME" => GetMessage("data_pro1c_clear_tag_cache_agent_interval"),
+		"NAME2" => GetMessage("data_pro1c_clear_tag_cache_agent_interval_2"),
 		"TYPE" => "INTEGER",
 		"MIN" => 1,
-		"HELP" => GetMessage("import_pro1c_clear_tag_cache_agent_interval_help"),
+		"HELP" => GetMessage("data_pro1c_clear_tag_cache_agent_interval_help"),
 		"GROUP" =>"clear_cache",
 	);
 
@@ -103,9 +94,9 @@ else
 		"CODE" => "clear_tag_cache_agent_main_page",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_clear_tag_cache_agent_main_page"),
+		"NAME" => GetMessage("data_pro1c_clear_tag_cache_agent_main_page"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_clear_tag_cache_agent_main_page_help"),
+		"HELP" => GetMessage("data_pro1c_clear_tag_cache_agent_main_page_help"),
 		"GROUP" =>"clear_cache",
 	);
 
@@ -115,11 +106,11 @@ else
 		"CODE" => "import_pause",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_import_pause"),
-		"NAME2" => GetMessage("import_pro1c_import_pause_2"),
+		"NAME" => GetMessage("data_pro1c_import_pause"),
+		"NAME2" => GetMessage("data_pro1c_import_pause_2"),
 		"TYPE" => "INTEGER",
 		"MIN" => 0,
-		"HELP" => GetMessage("import_pro1c_import_pause_help"),
+		"HELP" => GetMessage("data_pro1c_import_pause_help"),
 		"GROUP" =>"failure_resistance",
 	);
 
@@ -127,11 +118,11 @@ else
 		"CODE" => "time_limit",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_time_limit"),
-		"NAME2" => GetMessage("import_pro1c_time_limit_2"),
+		"NAME" => GetMessage("data_pro1c_time_limit"),
+		"NAME2" => GetMessage("data_pro1c_time_limit_2"),
 		"TYPE" => "INTEGER",
 		"MIN" => 0,
-		"HELP" => GetMessage("import_pro1c_time_limit_help", array("#TIME_LIMIT#" => ini_get( "max_input_time" ) ) ),
+		"HELP" => GetMessage("data_pro1c_time_limit_help", array("#TIME_LIMIT#" => ini_get( "max_input_time" ) ) ),
 		"GROUP" =>"failure_resistance",
 	);
 
@@ -139,11 +130,11 @@ else
 		"CODE" => "memory_limit",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_memory_limit"),
-		"NAME2" => GetMessage("import_pro1c_memory_limit_2"),
+		"NAME" => GetMessage("data_pro1c_memory_limit"),
+		"NAME2" => GetMessage("data_pro1c_memory_limit_2"),
 		"TYPE" => "INTEGER",
 		"MIN" => -1,
-		"HELP" => GetMessage("import_pro1c_memory_limit_help", array("#MEMORY_LIMIT#" => ini_get( "memory_limit" ) ) ),
+		"HELP" => GetMessage("data_pro1c_memory_limit_help", array("#MEMORY_LIMIT#" => ini_get( "memory_limit" ) ) ),
 		"GROUP" =>"failure_resistance",
 	);
 
@@ -157,9 +148,9 @@ else
 		"CODE" => "fast_write",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_fast_write"),
+		"NAME" => GetMessage("data_pro1c_fast_write"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_fast_write_help"),
+		"HELP" => GetMessage("data_pro1c_fast_write_help"),
 		"GROUP" => "fast",
 	);
 
@@ -169,9 +160,9 @@ else
 		"CODE" => "quantity_set_to_zero",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_quantity_set_to_zero"),
+		"NAME" => GetMessage("data_pro1c_quantity_set_to_zero"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_quantity_set_to_zero_help"),
+		"HELP" => GetMessage("data_pro1c_quantity_set_to_zero_help"),
 		"GROUP" => "quantity",
 	);
 
@@ -182,32 +173,32 @@ else
 	ob_start();
 	?>
 
-		<?=GetMessage("import_pro1c_live_log_help" );?>
+		<?=GetMessage("data_pro1c_live_log_help" );?>
 
 		<?if(CModule::IncludeModule("pull")):?>
 
-		<?$pull_version = CImportPro1c::GetModuleVersion("pull");?>
+		<?$pull_version = CDataPro1c::GetModuleVersion("pull");?>
 
 		<?if ( version_compare( $pull_version, '14.0.0' ) < 0):?>
 			<br /><br />
-			<?=GetMessage("import_pro1c_live_log_version", array("#LANG#" => LANG,  "#CURRENT_VERSION#" => $pull_version )  );?>
+			<?=GetMessage("data_pro1c_live_log_version", array("#LANG#" => LANG,  "#CURRENT_VERSION#" => $pull_version )  );?>
 		<?endif?>
 
 		<br /><br />
-		<?=GetMessage("import_pro1c_live_log_open", array("#LANG#" => LANG ) );?>
+		<?=GetMessage("data_pro1c_live_log_open", array("#LANG#" => LANG ) );?>
 
 		<?if ( !CPullOptions::GetNginxStatus() ):?>
 			<br /><br />
-			<?=GetMessage("import_pro1c_pull_notice", array("#LANG#" => LANG ) );?>
+			<?=GetMessage("data_pro1c_pull_notice", array("#LANG#" => LANG ) );?>
 		<?endif?>
 
 	<?else:?>
 		<br /><br />
-		<?=GetMessage("import_pro1c_pull_not_installed" );?>
+		<?=GetMessage("data_pro1c_pull_not_installed" );?>
 
 		<?if(@file_exists( $_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/pull/install/index.php") ):?>
 			<br /><br />
-			<?=GetMessage("import_pro1c_pull_install", array("#LANG#" => LANG ) );?>
+			<?=GetMessage("data_pro1c_pull_install", array("#LANG#" => LANG ) );?>
 		<?endif?>
 
 	<?endif?>
@@ -221,7 +212,7 @@ else
 		"CODE" => "live_log",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_live_log"),
+		"NAME" => GetMessage("data_pro1c_live_log"),
 		"TYPE" => "CHECKBOX",
 		"HELP" => $live_log_help,
 		"GROUP" => "debug",
@@ -232,20 +223,20 @@ else
 		"CODE" => "forbidden",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_forbidden"),
+		"NAME" => GetMessage("data_pro1c_forbidden"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_forbidden_help" ),
+		"HELP" => GetMessage("data_pro1c_forbidden_help" ),
 		"GROUP" => "debug",
 	);
 
-	$log_file_name = CImportPro1c::GetLogFileName();
-	$log_help = GetMessage("import_pro1c_log_help", array("#LOG_FILENAME#" => $log_file_name ) );
+	$log_file_name = CDataPro1c::GetLogFileName();
+	$log_help = GetMessage("data_pro1c_log_help", array("#LOG_FILENAME#" => $log_file_name ) );
 
 	$arOptions[] = array(
 		"CODE" => "log",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_log"),
+		"NAME" => GetMessage("data_pro1c_log"),
 		"TYPE" => "CHECKBOX",
 		"HELP" => $log_help,
 		"GROUP" => "debug",
@@ -255,9 +246,9 @@ else
 		"CODE" => "log_trace",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_log_trace"),
+		"NAME" => GetMessage("data_pro1c_log_trace"),
 		"TYPE" => "INTEGER",
-		"HELP" => GetMessage("import_pro1c_log_trace_help"),
+		"HELP" => GetMessage("data_pro1c_log_trace_help"),
 		"MIN" => 0,
 		"GROUP" => "debug",
 	);
@@ -266,11 +257,11 @@ else
 		"CODE" => "log_max_size",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_log_max_size"),
-		"NAME2" => GetMessage("import_pro1c_log_max_size_2"),
+		"NAME" => GetMessage("data_pro1c_log_max_size"),
+		"NAME2" => GetMessage("data_pro1c_log_max_size_2"),
 		"TYPE" => "INTEGER",
 		"MIN" => 1,
-		"HELP" => GetMessage("import_pro1c_log_max_size_help"),
+		"HELP" => GetMessage("data_pro1c_log_max_size_help"),
 		"GROUP" =>"debug",
 	);
 
@@ -278,10 +269,10 @@ else
 		"CODE" => "log_element",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_log_element"),
-		//"NAME2" => GetMessage("import_pro1c_log_max_size_2"),
+		"NAME" => GetMessage("data_pro1c_log_element"),
+		//"NAME2" => GetMessage("data_pro1c_log_max_size_2"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_log_element_help"),
+		"HELP" => GetMessage("data_pro1c_log_element_help"),
 		"GROUP" =>"debug",
 	);
 
@@ -292,9 +283,9 @@ else
 		"CODE" => "copy_exchange_files",
 		"SITE_ID" => "",
 		"SHOW_EXACT_SITE_VALUE" => false,
-		"NAME" => GetMessage("import_pro1c_copy_exchange_files"),
+		"NAME" => GetMessage("data_pro1c_copy_exchange_files"),
 		"TYPE" => "CHECKBOX",
-		"HELP" => GetMessage("import_pro1c_copy_exchange_files_help"),
+		"HELP" => GetMessage("data_pro1c_copy_exchange_files_help"),
 		"GROUP" => "debug",
 	);
 
@@ -310,7 +301,7 @@ else
 //	foreach ( $arSites as $arSite )
 //	{
 //		$arGroups[ "group2_".$arSite["ID"] ] = array(
-//			"NAME" =>  GetMessage("IMPORT_GEO_GROUP_SITE")." [".$arSite["ID"]."] ".$arSite["NAME"],
+//			"NAME" =>  GetMessage("DATA_GEO_GROUP_SITE")." [".$arSite["ID"]."] ".$arSite["NAME"],
 //		);
 //	}
 //	foreach ( $arSites as $arSite )
@@ -319,7 +310,7 @@ else
 //			"CODE" => "set_location",
 //			"SITE_ID" => $arSite["ID"],
 //			"SHOW_EXACT_SITE_VALUE" => false,
-//			"NAME" => GetMessage("IMPORT_GET_SET_LOCATION"),
+//			"NAME" => GetMessage("DATA_GET_SET_LOCATION"),
 //			"TYPE" => "CHECKBOX",
 //			"HELP" => "",
 //			"GROUP" =>"group2_".$arSite["ID"],
@@ -329,9 +320,9 @@ else
 //			"CODE" => "set_default_location_id",
 //			"SITE_ID" => $arSite["ID"],
 //			"SHOW_EXACT_SITE_VALUE" => false,
-//			"NAME" => GetMessage("IMPORT_GET_SET_DEFAULT_LOCATION_ID"),
+//			"NAME" => GetMessage("DATA_GET_SET_DEFAULT_LOCATION_ID"),
 //			"TYPE" => "CHECKBOX",
-//			"HELP" => "", //GetMessage("IMPORT_GET_SET_DEFAULT_LOCATION_ID_HELP"),
+//			"HELP" => "", //GetMessage("DATA_GET_SET_DEFAULT_LOCATION_ID_HELP"),
 //			"GROUP" =>"group2_".$arSite["ID"],
 //		);
 //
@@ -339,9 +330,9 @@ else
 //			"CODE" => "default_location_id",
 //			"SITE_ID" => $arSite["ID"],
 //			"SHOW_EXACT_SITE_VALUE" => false,
-//			"NAME" => GetMessage("IMPORT_GET_DEFAULT_LOCATION_ID"),
+//			"NAME" => GetMessage("DATA_GET_DEFAULT_LOCATION_ID"),
 //			"TYPE" => "LOCATION",
-//			"HELP" => GetMessage("IMPORT_GET_DEFAULT_LOCATION_ID_HELP"),
+//			"HELP" => GetMessage("DATA_GET_DEFAULT_LOCATION_ID_HELP"),
 //			"GROUP" =>"group2_".$arSite["ID"],
 //		);
 //	}
@@ -367,7 +358,7 @@ else
 		{
 			foreach ($_REQUEST as $key => $value)
 			{
-				if ( preg_match( '/^import_pro1c_settings_([0-9]+)_row$/', $key, $arMatches ) )
+				if ( preg_match( '/^data_pro1c_settings_([0-9]+)_row$/', $key, $arMatches ) )
 				{
 					$arItem = array(
 						"ACTIVE" => "N",
@@ -399,15 +390,15 @@ else
 //						
 //						if ( strlen( $arItem["CODE"] ) == 0 )
 //						{
-//							$arErrors[] = GetMessage( "import_pro1c_error_empty", array( "#TRAIT#" => $field_name_html ) );
+//							$arErrors[] = GetMessage( "data_pro1c_error_empty", array( "#TRAIT#" => $field_name_html ) );
 //						}
 //						elseif (  preg_match( '/^([0-9]+).*?$/', $arItem["CODE"] ) )
 //						{
-//							$arErrors[] = GetMessage( "import_pro1c_error_first_symbol", array( "#TRAIT#" => $field_name_html ) );
+//							$arErrors[] = GetMessage( "data_pro1c_error_first_symbol", array( "#TRAIT#" => $field_name_html ) );							
 //						}
 //						elseif ( !preg_match( '/^([a-zA-Z0-9_]+)$/', $arItem["CODE"] ) )
 //						{
-//							$arErrors[] = GetMessage( "import_pro1c_error_format", array( "#TRAIT#" => $field_name_html ) );
+//							$arErrors[] = GetMessage( "data_pro1c_error_format", array( "#TRAIT#" => $field_name_html ) );							
 //						}
 					}
 				}
@@ -415,10 +406,10 @@ else
 
 			if (count( $arErrors ) == 0 )
 			{
-				$bSaved = CImportPro1C::SetSettings( $arSettings );
+				$bSaved = CDataPro1C::SetSettings( $arSettings );
 				if (!$bSaved)
 				{
-					$arErrors[] = GetMessage("import_pro1c_error_save");
+					$arErrors[] = GetMessage("data_pro1c_error_save");
 				}
 			}
 
@@ -531,7 +522,7 @@ else
 			}
 
 
-			CImportPro1CCache::SetAgentByOptions();
+			CDataPro1CCache::SetAgentByOptions();
 		}
 
 
@@ -560,7 +551,7 @@ else
 			}
 
 			// remove all
-			COption::RemoveOption("import.pro1c");
+			COption::RemoveOption("data.pro1c");
 
 			//			COption::SetOptionString( $module_id, "random_value", $random_value_tmp );
 
@@ -580,12 +571,12 @@ else
 				$APPLICATION->DelGroupRight($module_id, array($zr["ID"]));
 			}
 
-			CImportPro1CCache::SetAgentByOptions();
+			CDataPro1CCache::SetAgentByOptions();
 		}
 
 		if (count( $arErrors ) == 0 )
 		{
-			$arSettings = CImportPro1C::GetSettings();
+			$arSettings = CDataPro1C::GetSettings();
 		}
 
 
@@ -625,7 +616,7 @@ else
 			CAdminMessage::ShowMessage(
 				Array(
 					"TYPE"=>"ERROR",
-					"MESSAGE" => GetMessage("import_pro1c_error_save_header"),
+					"MESSAGE" => GetMessage("data_pro1c_error_save_header"),
 					"DETAILS"=> implode( "<br />", $arErrors ),
 					"HTML"=>true
 				)
@@ -634,8 +625,8 @@ else
 
 		$aTabs = array(
 			array("DIV" => "edit1", "TAB" => GetMessage("MAIN_TAB_SET"), "ICON" => "", "TITLE" => GetMessage("MAIN_TAB_TITLE_SET")),
-			array("DIV" => "edit2", "TAB" => GetMessage("import_pro1c_tab_debug"), "ICON" => "", "TITLE" => GetMessage("import_pro1c_tab_debug") ),
-			array("DIV" => "edit3", "TAB" => GetMessage("import_pro1c_additional_settings"), "ICON" => "", "TITLE" => GetMessage("import_pro1c_additional_settings") ),
+			array("DIV" => "edit2", "TAB" => GetMessage("data_pro1c_tab_debug"), "ICON" => "", "TITLE" => GetMessage("data_pro1c_tab_debug") ),
+			array("DIV" => "edit3", "TAB" => GetMessage("data_pro1c_additional_settings"), "ICON" => "", "TITLE" => GetMessage("data_pro1c_additional_settings") ),
 			array("DIV" => "edit4", "TAB" => GetMessage("MAIN_TAB_RIGHTS"), "ICON" => "", "TITLE" => GetMessage("MAIN_TAB_TITLE_RIGHTS")),
 		);
 
@@ -660,8 +651,8 @@ else
 						CAdminMessage::ShowMessage(
 							Array(
 								"TYPE"=>"OK",
-								"MESSAGE" => GetMessage("import_pro1c_prolog_status_demo"),
-								"DETAILS"=> GetMessage("import_pro1c_prolog_buy_html"),
+								"MESSAGE" => GetMessage("data_pro1c_prolog_status_demo"),
+								"DETAILS"=> GetMessage("data_pro1c_prolog_buy_html"),
 								"HTML"=>true
 							)
 						);
@@ -670,7 +661,7 @@ else
 				</td>
 			</tr>
 			<tr class="heading">
-				<td valign="top" colspan="2" align="center"><?=GetMessage("import_pro1c_header_files")?></td>
+				<td valign="top" colspan="2" align="center"><?=GetMessage("data_pro1c_header_files")?></td>
 			</tr>
 			<tr>
 				<td width="100%" style="" colspan="2">
@@ -680,26 +671,26 @@ else
 								<table class="internal" cellspacing="0" cellpadding="0" border="0">
 									<thead>
 									<tr class="heading">
-										<td><?=GetMessage("import_pro1c_field_active")?></td>
-										<td><?=GetMessage("import_pro1c_field_name")?></td>
-										<td><?=GetMessage("import_pro1c_field_skip_product")?></td>
+										<td><?=GetMessage("data_pro1c_field_active")?></td>
+										<td><?=GetMessage("data_pro1c_field_name")?></td>
+										<td><?=GetMessage("data_pro1c_field_skip_product")?></td>
 									</tr>
 									</thead>
-									<tbody id="import_pro1c_settings_body">
+									<tbody id="data_pro1c_settings_body">
 									<?foreach ( $arSettings as $arItem ):?>
 										<tr>
-											<td style="text-align: center;"><input name="import_pro1c_settings_<?=$rowIndex?>_row[ACTIVE]" value="Y" type="checkbox"<?if ($arItem["ACTIVE"] == "Y" ) echo ' checked="checked"'; ?> /></td>
-											<td><input name="import_pro1c_settings_<?=$rowIndex?>_row[NAME]" value="<?=htmlspecialcharsbx($arItem["NAME"])?>" type="text" size="60" /></td>
-											<td style="text-align: center;"><input name="import_pro1c_settings_<?=$rowIndex?>_row[SKIP_PRODUCTS]" value="Y" type="checkbox"<?if ($arItem["SKIP_PRODUCTS"] == "Y" ) echo ' checked="checked"'; ?> /></td>
+											<td style="text-align: center;"><input name="data_pro1c_settings_<?=$rowIndex?>_row[ACTIVE]" value="Y" type="checkbox"<?if ($arItem["ACTIVE"] == "Y" ) echo ' checked="checked"'; ?> /></td>
+											<td><input name="data_pro1c_settings_<?=$rowIndex?>_row[NAME]" value="<?=htmlspecialcharsbx($arItem["NAME"])?>" type="text" size="60" /></td>
+											<td style="text-align: center;"><input name="data_pro1c_settings_<?=$rowIndex?>_row[SKIP_PRODUCTS]" value="Y" type="checkbox"<?if ($arItem["SKIP_PRODUCTS"] == "Y" ) echo ' checked="checked"'; ?> /></td>
 										</tr>
 										<?$rowIndex++;?>
 									<?endforeach?>
 
 									<?for ( $i = 0; $i < 1; $i++ ):?>
 										<tr>
-											<td style="text-align: center;"><input name="import_pro1c_settings_<?=$rowIndex?>_row[ACTIVE]" value="Y" type="checkbox" checked="checked" /></td>
-											<td><input name="import_pro1c_settings_<?=$rowIndex?>_row[NAME]" value="" type="text" size="60" /></td>
-											<td style="text-align: center;"><input name="import_pro1c_settings_<?=$rowIndex?>_row[SKIP_PRODUCTS]" value="Y" type="checkbox" /></td>
+											<td style="text-align: center;"><input name="data_pro1c_settings_<?=$rowIndex?>_row[ACTIVE]" value="Y" type="checkbox" checked="checked" /></td>
+											<td><input name="data_pro1c_settings_<?=$rowIndex?>_row[NAME]" value="" type="text" size="60" /></td>
+											<td style="text-align: center;"><input name="data_pro1c_settings_<?=$rowIndex?>_row[SKIP_PRODUCTS]" value="Y" type="checkbox" /></td>
 										</tr>
 										<?$rowIndex++;?>
 									<?endfor?>
@@ -707,13 +698,13 @@ else
 								</table>
 								<br  />
 								<div style="width: 100%; text-align: center;">
-									<input type="button" value="<?=GetMessage("import_pro1c_more")?>" onclick="import_pro1c_add_row();" />
+									<input type="button" value="<?=GetMessage("data_pro1c_more")?>" onclick="data_pro1c_add_row();" />
 								</div>
 
 								<div style="clear: both"> </div>
 								<br  />
 								<?=BeginNote();?>
-								<?=GetMessage("import_pro1c_settings_help")?>
+								<?=GetMessage("data_pro1c_settings_help")?>
 								<?=EndNote();?>
 							</td>
 						<tr>
@@ -734,7 +725,7 @@ else
 						CAdminMessage::ShowMessage(
 							Array(
 								"TYPE"=>"ERROR",
-								"MESSAGE" => GetMessage("import_pro1c_managed_cache_off"),
+								"MESSAGE" => GetMessage("data_pro1c_managed_cache_off"),
 								"DETAILS"=> "",
 								"HTML"=>true
 							)
@@ -744,89 +735,89 @@ else
 				</tr>
 			<?else:?>
 
-				<?//CImportPro1COptions::ShowAll( $arGroups, $arDisplayOptions );?>
+				<?//CDataPro1COptions::ShowAll( $arGroups, $arDisplayOptions );?>
 
-				<?CImportPro1COptions::ShowGroup( "clear_cache", $arGroups, $arDisplayOptions );?>
+				<?CDataPro1COptions::ShowGroup( "clear_cache", $arGroups, $arDisplayOptions );?>
 			<?endif?>
 
 
-			<?CImportPro1COptions::ShowGroup( "failure_resistance", $arGroups, $arDisplayOptions );?>
+			<?CDataPro1COptions::ShowGroup( "failure_resistance", $arGroups, $arDisplayOptions );?>
 
 
 <?/*
 			<tr class="heading">
-				<td valign="top" colspan="2" align="center"><?=GetMessage("import_pro1c_header_failure_resistance")?></td>
+				<td valign="top" colspan="2" align="center"><?=GetMessage("data_pro1c_header_failure_resistance")?></td>
 			</tr>
 
 			<tr>
-				<td valign="top" width="50%" class="field-name"><label for='import_pro1c_import_pause'><?=GetMessage("import_pro1c_import_pause")?></label></td>
+				<td valign="top" width="50%" class="field-name"><label for='data_pro1c_import_pause'><?=GetMessage("data_pro1c_import_pause")?></label></td>
 				<td valign="top" width="50%">
 					<input
 						type="text"
 						value="<?=$import_pause?>"
-						id="import_pro1c_import_pause"
+						id="data_pro1c_import_pause"
 						name="import_pause"
-						/> <?=GetMessage("import_pro1c_import_pause_2")?>
+						/> <?=GetMessage("data_pro1c_import_pause_2")?>
 
 					<?=BeginNote();?>
-					<?=GetMessage("import_pro1c_import_pause_help", array("#LANG#" => LANG ) );?>
+					<?=GetMessage("data_pro1c_import_pause_help", array("#LANG#" => LANG ) );?>
 					<?=EndNote();?>
 				</td>
 			</tr>
 
 			<tr>
-				<td valign="top" width="50%" class="field-name"><label for='import_pro1c_time_limit'><?=GetMessage("import_pro1c_time_limit")?></label></td>
+				<td valign="top" width="50%" class="field-name"><label for='data_pro1c_time_limit'><?=GetMessage("data_pro1c_time_limit")?></label></td>
 				<td valign="top" width="50%">
 					<input
 						type="text"
 						value="<?=$time_limit?>"
-						id="import_pro1c_time_limit"
+						id="data_pro1c_time_limit"
 						name="time_limit"
-						/> <?=GetMessage("import_pro1c_time_limit_2")?>
+						/> <?=GetMessage("data_pro1c_time_limit_2")?>
 
 					<?=BeginNote();?>
-					<?=GetMessage("import_pro1c_time_limit_help", array("#TIME_LIMIT#" => ini_get( "max_execution_time" ) ) );?>
+					<?=GetMessage("data_pro1c_time_limit_help", array("#TIME_LIMIT#" => ini_get( "max_execution_time" ) ) );?>
 					<?=EndNote();?>
 				</td>
 			</tr>
 
 			<tr>
-				<td valign="top" width="50%" class="field-name"><label for='import_pro1c_memory_limit'><?=GetMessage("import_pro1c_memory_limit")?></label></td>
+				<td valign="top" width="50%" class="field-name"><label for='data_pro1c_memory_limit'><?=GetMessage("data_pro1c_memory_limit")?></label></td>
 				<td valign="top" width="50%">
 					<input
 						type="text"
 						value="<?=$memory_limit?>"
-						id="import_pro1c_memory_limit"
+						id="data_pro1c_memory_limit"
 						name="memory_limit"
-						/> <?=GetMessage("import_pro1c_memory_limit_2")?>
+						/> <?=GetMessage("data_pro1c_memory_limit_2")?>
 
 					<?=BeginNote();?>
-					<?=GetMessage("import_pro1c_memory_limit_help", array("#MEMORY_LIMIT#" => ini_get( "memory_limit" ) ) );?>
+					<?=GetMessage("data_pro1c_memory_limit_help", array("#MEMORY_LIMIT#" => ini_get( "memory_limit" ) ) );?>
 					<?=EndNote();?>
 				</td>
 			</tr>
 */?>
 			<?$tabControl->BeginNextTab();?>
 
-			<?CImportPro1COptions::ShowGroup( "debug", $arGroups, $arDisplayOptions );?>
+			<?CDataPro1COptions::ShowGroup( "debug", $arGroups, $arDisplayOptions );?>
 
 
 			<?/*
 			<tr>
-				<td valign="top" width="50%" class="field-name"><label><?=GetMessage("import_pro1c_import_date")?></label></td>
-				<td valign="top" width="50%"><?=CImportPro1C::GetLastSuccessImportDate("&mdash;");?></td>
+				<td valign="top" width="50%" class="field-name"><label><?=GetMessage("data_pro1c_import_date")?></label></td>
+				<td valign="top" width="50%"><?=CDataPro1C::GetLastSuccessImportDate("&mdash;");?></td>				
 			</tr>
 			<tr>
-				<td valign="top" width="50%" class="field-name"><label><?=GetMessage("import_pro1c_offers_date")?></label></td>
-				<td valign="top" width="50%"><?=CImportPro1C::GetLastSuccessOffersDate("&mdash;");?></td>
+				<td valign="top" width="50%" class="field-name"><label><?=GetMessage("data_pro1c_offers_date")?></label></td>
+				<td valign="top" width="50%"><?=CDataPro1C::GetLastSuccessOffersDate("&mdash;");?></td>				
 			</tr>		
 			 */?>
 
 		<?$tabControl->BeginNextTab();?>
 
-			<?CImportPro1COptions::ShowGroup( "fast", $arGroups, $arDisplayOptions );?>
+			<?CDataPro1COptions::ShowGroup( "fast", $arGroups, $arDisplayOptions );?>
 
-			<?CImportPro1COptions::ShowGroup( "quantity", $arGroups, $arDisplayOptions );?>
+			<?CDataPro1COptions::ShowGroup( "quantity", $arGroups, $arDisplayOptions );?>
 
 		<?$tabControl->BeginNextTab();?>
 
@@ -840,7 +831,7 @@ else
 		</form>
 
 		<table style="display: none;">
-			<tbody id="import_pro1c_settings_body_from">
+			<tbody id="data_pro1c_settings_body_from">
 			<tr>
 				<td style="text-align: center;"><input name="ACTIVE" value="Y" type="checkbox" checked="checked" /></td>
 				<td><input name="NAME" value="" type="text" size="60" /></td>
@@ -849,12 +840,12 @@ else
 			</tbody>
 		</table>
 		<script type="text/javascript">
-			var import_pro1c_add_row_index = <?=$rowIndex?>;
+			var data_pro1c_add_row_index = <?=$rowIndex?>;
 
-			var import_pro1c_add_row = function()
+			var data_pro1c_add_row = function()
 			{
-				var from = document.getElementById("import_pro1c_settings_body_from");
-				var to = document.getElementById("import_pro1c_settings_body");
+				var from = document.getElementById("data_pro1c_settings_body_from");
+				var to = document.getElementById("data_pro1c_settings_body");
 
 				// clone the first children <tr>
 				var node = from.getElementsByTagName("tr")[0].cloneNode(true);
@@ -863,18 +854,18 @@ else
 				var children = node.getElementsByTagName("input");
 				for(var i=0; i<children.length; i++)
 				{
-					children[i].name = "import_pro1c_settings_" + import_pro1c_add_row_index + "_row[" + children[i].name + "]";
+					children[i].name = "data_pro1c_settings_" + data_pro1c_add_row_index + "_row[" + children[i].name + "]";
 				}
 
 				// selects
 				var children = node.getElementsByTagName("select");
 				for(var i=0; i<children.length; i++)
 				{
-					children[i].name = "import_pro1c_settings_" + import_pro1c_add_row_index + "_row[" + children[i].name + "]";
+					children[i].name = "data_pro1c_settings_" + data_pro1c_add_row_index + "_row[" + children[i].name + "]";
 				}
 
 				to.appendChild( node );
-				import_pro1c_add_row_index++;
+				data_pro1c_add_row_index++;
 			};
 		</script>
 		<?

@@ -1,0 +1,5 @@
+/*Old menu icon and title*/
+#data_pro1c_menu_icon {background-image:url(icons/data.pro1c/menu.png);}
+
+/*Menu icon BX12*/
+.data_pro1c_menu_icon {background:url(icons/data.pro1c/menu.png) 5px 0px no-repeat !important;}

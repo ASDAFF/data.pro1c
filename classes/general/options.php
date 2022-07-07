@@ -1,9 +1,5 @@
 <?
-/**
- * Copyright (c) 4/8/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
- */
-
-class CImportPro1COptions
+class CDataPro1COptions
 {
 	static public function ShowGroup( $group_key, $arGroups, $arDisplayOptions )
 	{
